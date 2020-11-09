@@ -87,7 +87,8 @@ class Discord:
                 "Incorrectly configured: Channel IDs must not be empty.")
             self.shutdown_discord()
             return
-        for id in self.channel_ids.split(','):
+        x=self.channel_ids.split(',')
+        for id in x:
             if len(id.strip()) != CHANNEL_ID_LENGTH:
                 self.logger.error(
                     "Incorrectly configured: Each channel ID must be %d chars long." % CHANNEL_ID_LENGTH)
@@ -368,7 +369,8 @@ class Discord:
         if snapshots is not None:
             for snapshot in snapshots:
                 if channel_id == None:
-                    for id in self.channel_ids.split(','):
+                    x=self.channel_ids.split(',')
+                    for id in x:
                         if not self._dispatch_message(id.strip(), snapshot=snapshot):
                             return False
                 else:
@@ -378,7 +380,8 @@ class Discord:
         if embeds is not None:
             for embed in embeds:
                 if channel_id == None:
-                    for id in self.channel_ids.split(','):
+                    x=self.channel_ids.split(',')
+                    for id in x:
                         if not self._dispatch_message(id.strip(), embed=embed):
                             return False
                 else:
